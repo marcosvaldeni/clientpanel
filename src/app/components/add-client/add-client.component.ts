@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 import { Client } from '../../models/Client';
 
@@ -18,14 +19,28 @@ export class AddClientComponent implements OnInit {
   }
 
   disableBalanceOnAdd: boolean = true;
+  @ViewChild('clientForm', {static:false}) form: any;
 
-  constructor() {}
+  constructor(private flashMessage: FlashMessagesService) {}
 
   ngOnInit(): void {
+    this.flashMessage.show('We are in about component!', { cssClass: 'alert-success', timeout: 1000 });
   }
 
-  onSubmit(e) {
+  onSubmit({value, valid}: {value: Client, valid: boolean}) {
+    if(this.disableBalanceOnAdd) {
+      value.balance = 0;
+    }
 
+    if(!valid) {
+      this.flashMessage.show('Please fill out the form correctly', {
+        cssClass: 'alert-danger', timeout: 4000
+      });
+    } else {
+      this.flashMessage.show('Please fill out the form correctly', {
+        cssClass: 'alert-danger', timeout: 4000
+      });
+    }
   }
 
 }
