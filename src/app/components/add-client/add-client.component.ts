@@ -30,7 +30,8 @@ export class AddClientComponent implements OnInit {
     ) {}
 
   ngOnInit(): void {
-    this.flashMessage.show('We are in about component!', { cssClass: 'alert-success', timeout: 4000 });
+    this.flashMessage.show('We are in about component!', 
+    { cssClass: 'alert-success', timeout: 4000 });
   }
 
   onSubmit({value, valid}: {value: Client, valid: boolean}) {

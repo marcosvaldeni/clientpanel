@@ -32,7 +32,7 @@ export class ClientDetailsComponent implements OnInit {
 
       }
       this.client = client;
-    })
+    });
   }
 
   updateBalance() {
@@ -44,7 +44,13 @@ export class ClientDetailsComponent implements OnInit {
   }
   
   onDeleteClick() {
-    
+    if (confirm('Are you sure?')) {
+      this.clientService.deleteClient(this.client);
+      this.flashMessage.show('New client added', {
+        cssClass: 'alert-success', timeout: 4000
+      });
+      this.router.navigate(['/']);
+    }
   }
 
 
