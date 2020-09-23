@@ -12,7 +12,7 @@ export class AuthGuard implements CanActivate {
     private afAuth: AngularFireAuth
   ) { }
 
-  canActivate() {
+  canActivate(): Observable<boolean> {
     return this.afAuth.authState.pipe(
       map(auth => {
         if (!auth) {
