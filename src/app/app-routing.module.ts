@@ -21,7 +21,6 @@ const routes : Routes  = [
   {path: 'client/:id', component: ClientDetailsComponent, canActivate:[AuthGuard]},
   {path: 'settings', component: SettingsComponent, canActivate:[AuthGuard]},
   {path: '**', component: NotFoundComponent},
-
 ];
 
 @NgModule({
